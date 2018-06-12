@@ -47,10 +47,10 @@ public class UserTestCases {
 		
 
 		
-		user.setFirstname("srihari");
-		user.setLastname("sri");
-		user.setEmail("srihari@gmail.com");
-		user.setPassword("srihari");
+		user.setFirstname("sasi");
+		user.setLastname("s");
+		user.setEmail("sasis@gmail.com");
+		user.setPassword("sasi");
 		user.setPhonenumber("999789756");
 		
 		userDao.registration(user);

@@ -1,4 +1,13 @@
 package com.org.Configuration;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.org.models.Emp;
+import com.org.models.User;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 
 import java.util.Properties;
 
@@ -12,16 +21,13 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.org.models.Emp;
-import com.org.models.User;
-
 @Configuration
 @EnableTransactionManagement
 public class DatabaseConfig {
-  public DatabaseConfig(){
-	 System.out.println("DatabaseConfig class is instantiated"); 
-  }
-  @Bean
+	public DatabaseConfig(){
+		System.out.println("DBCOnfiguration class instantiated");
+	}
+	@Bean
 	public SessionFactory sessionFactory() {
 		LocalSessionFactoryBuilder lsf=
 				new LocalSessionFactoryBuilder(getDataSource());
@@ -31,7 +37,7 @@ public class DatabaseConfig {
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		lsf.addProperties(hibernateProperties);
-		Class classes[]=new Class[]{User.class,Emp.class};//class objects of all entities
+		Class classes[]=new Class[]{User.class,Emp.class};
 	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}
 	@Bean
@@ -41,10 +47,12 @@ public class DatabaseConfig {
 	    dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
 	    dataSource.setUsername("siri");
 	    dataSource.setPassword("siri");
-	    return dataSource;	    
+	    return dataSource;
+	    
 	}
 	@Bean
 	public HibernateTransactionManager hibTransManagement(){
 		return new HibernateTransactionManager(sessionFactory());
 	}
+
 }

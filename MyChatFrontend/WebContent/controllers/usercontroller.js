@@ -26,9 +26,9 @@ app.controller('UserCtrl',function($scope,UserService,$location,$rootScope,$cook
 		})
 	}
 	
-	$scope.updatePage=function(user){
+	$scope.updateProfile=function(user){
 		//updated user object
-		UserService.updatePage(user).then(
+		UserService.updateProfile(user).then(
 				function(response){
 					//store the updated user details in $rootScope and also in $cookieStore
 					$rootScope.loggedInUser=response.data//updated user object from middleware

@@ -30,7 +30,7 @@ public class EmpController{
    //Authentication and Authorization
    //Authentication - who are you?
    //Autherization - role?
-   String email=(String)session.getAttribute("email");
+   String email="surya.teja@xyz.com";//(String)session.getAttribute("email");
    if(email==null){//not logged in
 	   ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access...please login");
 	   return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);

@@ -33,7 +33,7 @@
 <div class="collapse navbar-collapse" id="collapse-example">
                 <ul class="nav navbar-nav ">
            <li><a href="#/home">Home</a></li>
-           <li><a href="#/addjob">Add Job</a></li>
+           <li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'">Add Job</a></li>
            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
            <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>

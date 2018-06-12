@@ -17,7 +17,7 @@ app.factory('UserService',function($http){
 		return $http.put("http://localhost:8081/MyChatMiddleware/logout")
 	}
      
-	userService.updatePage=function(user){//updated user profile
+	userService.updateProfile=function(user){//updated user profile
 		return $http.put("http://localhost:8081/MyChatMiddleware/update",user)
 	}
 

@@ -3,8 +3,8 @@ package com.org.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 //web.xml file
-public class WebAppInt extends AbstractAnnotationConfigDispatcherServletInitializer{
-  public WebAppInt(){
+public class WebAppInt {//extends AbstractAnnotationConfigDispatcherServletInitializer{
+  /* WebAppInt(){
   	System.out.println("WebAppInitializer class is loaded...");
   }
 	
@@ -28,6 +28,7 @@ public class WebAppInt extends AbstractAnnotationConfigDispatcherServletInitiali
 //	</servlet-mapping>
 		return new String[]{"/"};
 	}
+	*/
 
 }
 

@@ -15,9 +15,9 @@ app.config(function($routeProvider){
 		controller:'UserCtrl',
 		templateUrl:'pages/login.html'
 	})
-	.when('/updatepage',{
+	.when('/updateprofile',{
 		controller:'UserCtrl',
-		templateUrl:'pages/updatepage.html' //user object in updateprofile.html
+		templateUrl:'pages/updateprofile.html' //user object in updateprofile.html
 	})
 	.when('/addjob',{
 		controller:'EmpCtrl',
