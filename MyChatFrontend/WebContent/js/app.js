@@ -20,8 +20,8 @@ app.config(function($routeProvider){
 		templateUrl:'pages/updateprofile.html' //user object in updateprofile.html
 	})
 	.when('/addjob',{
-		controller:'EmpCtrl',
-		templateUrl:'pages/empform.html'
+		controller:'JobCtrl',
+		templateUrl:'pages/jobform.html'
 	})
 	
 	.otherwise({

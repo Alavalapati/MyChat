@@ -2,33 +2,27 @@ package com.org.Configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-//web.xml file
-public class WebAppInt {//extends AbstractAnnotationConfigDispatcherServletInitializer{
-  /* WebAppInt(){
-  	System.out.println("WebAppInitializer class is loaded...");
-  }
+public class WebAppInt  extends AbstractAnnotationConfigDispatcherServletInitializer
+{
+
+	public WebAppInt(){
+    	System.out.println("WebAppInitializer class is loaded and Instantiated");
+    }
 	
-	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[]{DatabaseConfig.class};
 	}
 
-	@Override
 	protected Class<?>[] getServletConfigClasses() {
+		// TODO Auto-generated method stub
 		return new Class[]{WebAppConfig.class};
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-		//All requests to this application will be send to dispatcherservlet
-		//similar to 
-//		<servlet-mapping>
-//		<servlet-name>dispatcher</servlet-name>
-//		<url-pattern>/</url-pattern>
-//	</servlet-mapping>
-		return new String[]{"/"};
+		// TODO Auto-generated method stub
+		return new String[]{"/"};// <url-pattern>/</url-pattern> Any requests,it will forwarded to DispatcherServlet
 	}
-	*/
 
 }
 

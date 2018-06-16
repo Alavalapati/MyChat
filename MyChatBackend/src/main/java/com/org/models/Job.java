@@ -3,18 +3,18 @@ package com.org.models;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name="emp_s123")
-public class Emp {
+@Table(name="job_s123")
+public class Job {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 private int id;
-private String empTitle;
-private String empDescription;
+private String jobTitle;
+private String jobDescription;
 private String skillsRequired;
 private String location;
 private String salary;
@@ -28,17 +28,17 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
-public String getEmpTitle() {
-	return empTitle;
+public String getJobTitle() {
+	return jobTitle;
 }
-public void setEmpTitle(String empTitle) {
-	this.empTitle = empTitle;
+public void setJobTitle(String jobTitle) {
+	this.jobTitle = jobTitle;
 }
-public String getEmpDescription() {
-	return empDescription;
+public String getJobDescription() {
+	return jobDescription;
 }
-public void setEmpDescription(String empDescription) {
-	this.empDescription = empDescription;
+public void setJobDescription(String jobDescription) {
+	this.jobDescription = jobDescription;
 }
 public String getSkillsRequired() {
 	return skillsRequired;
@@ -83,5 +83,5 @@ public void setActive(boolean active) {
 	this.active = active;
 }
 
-
 }
+

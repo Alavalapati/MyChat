@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="user_s123")
-public class User {
+public class User  {
 	@Id
 private String email;
 	@Column(nullable=false)//NOT NULL CONSTRAINT FOR THE COLUMN password

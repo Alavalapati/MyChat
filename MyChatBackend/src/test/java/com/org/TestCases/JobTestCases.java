@@ -10,18 +10,18 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.org.Dao.EmpDao;
+import com.org.Dao.JobDao;
 import com.org.Dao.UserDao;
-import com.org.models.Emp;
+import com.org.models.Job;
 import com.org.models.User;
 
-public class EmpTestCases {
+public class JobTestCases {
 	
 	@Autowired
 	static AnnotationConfigApplicationContext context;
 
 	@Autowired
-	 static EmpDao  empDao;
+	 static JobDao  jobDao;
 	
 	@BeforeClass
 	public static void initialize()
@@ -30,29 +30,28 @@ public class EmpTestCases {
 		context.scan("com.org");
 		context.refresh();
 		
-		//get the empDAO from context
-				empDao=(EmpDao) context.getBean("EmpDao");
+		jobDao =  (JobDao) context.getBean("jobDao");
 	}
 	
 	@Test
 	public void createEmpTestCase()
 	{
 				
-	Emp emp=new Emp();
+	Job job=new Job();
 	
 	
-    emp.setCompanyName("Wipro");
-	emp.setEmpDescription("Software Developer");
-	emp.setEmpTitle("WebTechnology");
-	emp.setLocation("Bangalore");
-	emp.setPostedOn(new Date());
-	emp.setSalary("4.5 Lac");
-	emp.setSkillsRequired("C,Java,SQL");
+    job.setCompanyName("Tcs");
+	job.setJobDescription("Software Developer");
+	job.setJobTitle("JavaDeveloper");
+	job.setLocation("Hyderabad");
+	job.setPostedOn(new Date());
+	job.setSalary("3.8 Lac");
+	job.setSkillsRequired("C,Java,HTML");
 	
-	emp.setYrsOfExp("2.5 Years");
-	empDao.saveEmp(emp);
+	job.setYrsOfExp("2 Years");
+    jobDao.saveJob(job);
 	
-	assertEquals(emp.getId(),emp.getId());
+	assertEquals(job.getId(),job.getId());
 	
 	
 	

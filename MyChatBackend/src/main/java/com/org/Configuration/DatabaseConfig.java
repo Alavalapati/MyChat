@@ -2,12 +2,12 @@ package com.org.Configuration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.org.models.Emp;
+
+import com.org.models.Job;
 import com.org.models.User;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 
 import java.util.Properties;
 
@@ -37,7 +37,7 @@ public class DatabaseConfig {
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		lsf.addProperties(hibernateProperties);
-		Class classes[]=new Class[]{User.class,Emp.class};
+		Class classes[]=new Class[]{User.class,Job.class};
 	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}
 	@Bean
