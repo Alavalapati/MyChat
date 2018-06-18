@@ -16,7 +16,6 @@ import com.org.models.Job;
 import com.org.models.User;
 
 public class JobTestCases {
-	
 	@Autowired
 	static AnnotationConfigApplicationContext context;
 
@@ -30,26 +29,26 @@ public class JobTestCases {
 		context.scan("com.org");
 		context.refresh();
 		
-		jobDao =  (JobDao) context.getBean("jobDao");
+		//get the userDAO from context
+				jobDao =  (JobDao) context.getBean("jobDao");
 	}
 	
 	@Test
-	public void createEmpTestCase()
+	public void createJobTestCase()
 	{
 				
 	Job job=new Job();
-	
-	
-    job.setCompanyName("Tcs");
-	job.setJobDescription("Software Developer");
-	job.setJobTitle("JavaDeveloper");
-	job.setLocation("Hyderabad");
+
+	job.setCompanyName("Tcs");
+	job.setJobDescription(".Net devgoodeloper and programming skills");
+	job.setJobTitle(".Net Developer");
+	job.setLocation("Bangalore");
 	job.setPostedOn(new Date());
-	job.setSalary("3.8 Lac");
-	job.setSkillsRequired("C,Java,HTML");
+	job.setSalary("4.5 Lac");
+	job.setSkillsRequired(".Net");
 	
-	job.setYrsOfExp("2 Years");
-    jobDao.saveJob(job);
+	job.setYrsOfExp("2.5 Years");
+	jobDao.saveJob(job);
 	
 	assertEquals(job.getId(),job.getId());
 	
@@ -60,10 +59,5 @@ public class JobTestCases {
 
 	
 	
-	 
-	
-	
-	
-
 
 

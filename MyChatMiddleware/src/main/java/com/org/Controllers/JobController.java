@@ -54,4 +54,52 @@ public class JobController {
     		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.INTERNAL_SERVER_ERROR);//2nd callback fun
     	}
     }
+    @RequestMapping(value="/activejobs",method=RequestMethod.GET)//select * from job where active=true
+    public ResponseEntity<?> getActiveJobs(HttpSession session){//Authentication
+    	String email=(String)session.getAttribute("email");
+    	if(email==null){
+    		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access.. please login");
+    		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);//2nd callback fun
+    	}
+    	
+    	List<Job> activeJobs=jobDao.getActiveJobs();
+    	return new ResponseEntity<List<Job>>(activeJobs,HttpStatus.OK);
+    }
+    @RequestMapping(value="/inactivejobs",method=RequestMethod.GET)//select * from job where active=false
+    public ResponseEntity<?> getInActiveJobs(HttpSession session){//Authenctication and authorization
+    	String email=(String)session.getAttribute("email");
+    	if(email==null){
+    		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access.. please login");
+    		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);//2nd callback fun
+    	}
+    	User user=userDao.getUser(email);
+    	if(!user.getRole().equals("ADMIN")){
+    		ErrorClazz errorClazz=new ErrorClazz(8,"Access Denied..");
+    		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);//2nd callback fun
+    	}
+          List<Job> inActiveJobs=jobDao.getInActiveJobs();
+          return new ResponseEntity<List<Job>>(inActiveJobs,HttpStatus.OK);
+    }
+    @RequestMapping(value="/updatejob",method=RequestMethod.PUT)
+    public ResponseEntity<?> updateJob(HttpSession session,@RequestBody Job job){//job with updated active value
+    	String email=(String)session.getAttribute("email");
+    	if(email==null){
+    		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access.. please login");
+    		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);//2nd callback fun
+    	}
+    	User user=userDao.getUser(email);
+    	if(!user.getRole().equals("ADMIN")){
+    		ErrorClazz errorClazz=new ErrorClazz(8,"Access Denied..");
+    		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);//2nd callback fun
+    	}
+    	jobDao.updateJob(job);
+    	return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }
+
+
+
+
+
+
+

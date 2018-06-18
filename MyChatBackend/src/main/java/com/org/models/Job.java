@@ -1,5 +1,4 @@
 package com.org.models;
-
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -84,4 +83,3 @@ public void setActive(boolean active) {
 }
 
 }
-

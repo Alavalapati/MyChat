@@ -3,8 +3,7 @@ package com.org.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInt  extends AbstractAnnotationConfigDispatcherServletInitializer
-{
-
+{	
 	public WebAppInt(){
     	System.out.println("WebAppInitializer class is loaded and Instantiated");
     }
@@ -23,6 +22,7 @@ public class WebAppInt  extends AbstractAnnotationConfigDispatcherServletInitial
 		// TODO Auto-generated method stub
 		return new String[]{"/"};// <url-pattern>/</url-pattern> Any requests,it will forwarded to DispatcherServlet
 	}
+	
 
 }
 

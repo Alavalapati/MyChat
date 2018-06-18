@@ -19,11 +19,18 @@ app.config(function($routeProvider){
 		controller:'UserCtrl',
 		templateUrl:'pages/updateprofile.html' //user object in updateprofile.html
 	})
-	.when('/addjob',{
+	.when('/addjob',{ //V to C
 		controller:'JobCtrl',
 		templateUrl:'pages/jobform.html'
 	})
-	
+	.when('/activejobs',{ //C to V,  $scope.activeJobs=[{},{}]
+		controller:'JobCtrl',
+		templateUrl:'pages/activejobslist.html'
+	})
+	.when('/inactivejobs',{
+		controller:'JobCtrl',
+		templateUrl:'pages/inactivejobslist.html'
+	})
 	.otherwise({
 		templateUrl:'pages/home.html'
 	})
@@ -33,7 +40,6 @@ app.run(function($rootScope,$cookieStore,UserService,$location){
 		$rootScope.loggedInUser=$cookieStore.get('loggedInUser')
 		
 		$rootScope.logout=function(){
-		alert('entering logout')
 		UserService.logout().then(function(response){
 			$rootScope.message="Loggedout successfully..."
 				delete $rootScope.loggedInUser
@@ -45,4 +51,6 @@ app.run(function($rootScope,$cookieStore,UserService,$location){
 		})
 	}	
 })
+
+
 

@@ -23,6 +23,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter{
     	CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
     	return commonsMultipartResolver;	
     }
-    
-    
 }
+																																																																																							
+    
+
