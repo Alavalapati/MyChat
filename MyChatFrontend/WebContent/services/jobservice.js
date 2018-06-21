@@ -17,7 +17,7 @@ app.factory('JobService',function($http){
 
 	}
 	jobService.updateActiveStatus=function(job){
-		return $http.post("http://localhost:8081/MyChatMiddleware/updatejob",job)
+		return $http.put("http://localhost:8081/MyChatMiddleware/updatejob",job)
 
 		
 	}

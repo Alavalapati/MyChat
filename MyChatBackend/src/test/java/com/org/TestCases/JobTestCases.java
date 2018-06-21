@@ -16,6 +16,7 @@ import com.org.models.Job;
 import com.org.models.User;
 
 public class JobTestCases {
+	
 	@Autowired
 	static AnnotationConfigApplicationContext context;
 
@@ -26,7 +27,7 @@ public class JobTestCases {
 	public static void initialize()
 	{
 		context = new AnnotationConfigApplicationContext();
-		context.scan("com.org");
+		context.scan("com.niit");
 		context.refresh();
 		
 		//get the userDAO from context
@@ -39,14 +40,14 @@ public class JobTestCases {
 				
 	Job job=new Job();
 
-	job.setCompanyName("Tcs");
-	job.setJobDescription(".Net devgoodeloper and programming skills");
-	job.setJobTitle(".Net Developer");
+	job.setCompanyName("Wipro");
+	job.setJobDescription("Software Developer");
+	job.setJobTitle("WebTechnology");
 	job.setLocation("Bangalore");
 	job.setPostedOn(new Date());
 	job.setSalary("4.5 Lac");
-	job.setSkillsRequired(".Net");
-	
+	job.setSkillsRequired("C,Java,SQL");
+	job.setActive(false);
 	job.setYrsOfExp("2.5 Years");
 	jobDao.saveJob(job);
 	
@@ -59,5 +60,4 @@ public class JobTestCases {
 
 	
 	
-
-
+	

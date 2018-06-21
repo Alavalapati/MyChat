@@ -86,3 +86,5 @@ app.controller('JobCtrl',function($scope,JobService,$location,$rootScope){
       
     
 })
+
+
