@@ -1,0 +1,12 @@
+<!--blogs which are approved-->
+<div class="panel panel-info">
+<div class="panel-heading">
+<b>{{blogPost.blogTitle}}</b><br>
+<b>PostedOn:{{blogPost.postedOn | date:'medium'}}</b><br>
+<b>PostedBy:{{blogPost.postedBy.firstname}} &nbps;{{blogPost.postedBy.lastname}}</b>
+</div>
+<div class="panel panel-body">
+<p ng-bind-html="content"></p>
+</div>
+{{blogPost.likes}} likes
+</div>

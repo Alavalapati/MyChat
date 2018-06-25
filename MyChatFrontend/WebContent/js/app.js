@@ -31,6 +31,28 @@ app.config(function($routeProvider){
 		controller:'JobCtrl',
 		templateUrl:'pages/inactivejobslist.html'
 	})
+	.when('/addblog',{
+		controller:'BlogCtrl',
+		templateUrl:'pages/blogform.html'
+	})
+	.when('/blogsapproved',{
+		controller:'BlogCtrl',
+		templateUrl:'pages/blogsapproved.html'
+	})
+	.when('/blogswaitingforapproval',{
+		controller:'BlogCtrl',
+		templateUrl:'pages/blogswaitingforapproval.html'
+	})
+
+		.when('/getblogapproved',{
+		controller:'BlogInDetailCtrl',
+		templateUrl:'pages/blogindetail.html'//blog which approved[likes,comments...]
+	})
+	.when('/getblogwaitingforapproval/:id',{//C->V,$scope.blogPost=[Http Response] select * from blogPost where id=?
+		controller:'BlogInDetailCtrl',
+		templateUrl:'pages/blogapprovalform.html'//select * from blogpost where id=?,approve /reject buttoon 
+	})
+
 	.otherwise({
 		templateUrl:'pages/home.html'
 	})

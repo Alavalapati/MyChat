@@ -1,5 +1,12 @@
 package com.org.Dao;
 
-public interface BlogPostDao {
+import java.util.List;
+import com.org.models.BlogPost;
 
+public interface BlogPostDao {
+void saveBlogPost(BlogPost blogpost);
+List<BlogPost> approvedBlogs();
+List<BlogPost> blogsWaitingForApproval();
+BlogPost getBlogPost(int id);
+void updateApprovalStatus(BlogPost blogPost);
 }

@@ -1,0 +1,19 @@
+{{error.message}}<!-- Internal server error while updating /deleting the blogpost error message will be display  -->
+<!-- blog waiting for approval -->
+<div class="panel panel-info">
+<div class="panel-heading">
+<b>{{blogPost.blogTitle}}</b> <br>
+<b>PostedOn:</b>   {{blogPost.postedOn | date:'medium'}}  <br>
+<b>PostedBy:</b>   {{blogPost.postedBy.firstname}} &nbsp;  {{blogPost.postedBy.lastname}}    <br>
+</div>
+<div class="panel panel-body">
+<p ng-bind-html="content"></p>
+</div>
+<br>
+<div>
+<!-- Approve-UPDATE property approved to true 
+REJECT - Delete blogpost-->
+<button ng-click="approve(blogPost)" class="btn btn-success">Approve</button>
+<button class="btn btn-danger" ng-click="reject(blogPost)">Reject</button>
+</div>
+</div>
