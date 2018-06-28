@@ -37,20 +37,19 @@ app.config(function($routeProvider){
 	})
 	.when('/blogsapproved',{
 		controller:'BlogCtrl',
-		templateUrl:'pages/blogsapproved.html'
+		templateUrl:'pages/blogsapproved.html' 
 	})
 	.when('/blogswaitingforapproval',{
 		controller:'BlogCtrl',
-		templateUrl:'pages/blogswaitingforapproval.html'
+		templateUrl:'pages/blogswaitingforapproval.html' 
 	})
-
-		.when('/getblogapproved',{
+	.when('/getblogapproved/:id',{
 		controller:'BlogInDetailCtrl',
-		templateUrl:'pages/blogindetail.html'//blog which approved[likes,comments...]
+		templateUrl:'pages/blogindetail.html' 
 	})
-	.when('/getblogwaitingforapproval/:id',{//C->V,$scope.blogPost=[Http Response] select * from blogPost where id=?
+	.when('/getblogwaitingforapproval/:id',{
 		controller:'BlogInDetailCtrl',
-		templateUrl:'pages/blogapprovalform.html'//select * from blogpost where id=?,approve /reject buttoon 
+		templateUrl:'pages/blogapprovalform.html' 
 	})
 
 	.otherwise({

@@ -1,9 +1,9 @@
 package com.org.TestCases;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
-
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -16,48 +16,38 @@ import com.org.models.Job;
 import com.org.models.User;
 
 public class JobTestCases {
-	
+
 	@Autowired
 	static AnnotationConfigApplicationContext context;
 
 	@Autowired
-	 static JobDao  jobDao;
-	
-	@BeforeClass
-	public static void initialize()
-	{
-		context = new AnnotationConfigApplicationContext();
-		context.scan("com.niit");
-		context.refresh();
-		
-		//get the userDAO from context
-				jobDao =  (JobDao) context.getBean("jobDao");
-	}
-	
-	@Test
-	public void createJobTestCase()
-	{
-				
-	Job job=new Job();
+	static JobDao jobDao;
 
-	job.setCompanyName("Wipro");
-	job.setJobDescription("Software Developer");
-	job.setJobTitle("WebTechnology");
-	job.setLocation("Bangalore");
-	job.setPostedOn(new Date());
-	job.setSalary("4.5 Lac");
-	job.setSkillsRequired("C,Java,SQL");
-	job.setActive(false);
-	job.setYrsOfExp("2.5 Years");
-	jobDao.saveJob(job);
-	
-	assertEquals(job.getId(),job.getId());
-	
-	
-	
+
+	@BeforeClass
+	public static void initialize() {
+		context = new AnnotationConfigApplicationContext();
+		context.scan("com.app");
+		context.refresh();
+
+		// get the productDAO from context
+		jobDao = (JobDao) context.getBean("jobDao");
+
+	}
+
+	@Ignore
+	@Test
+	public void CreateJobTestCase() {
+		Job job = new Job();
+
+		job.setJobTitle("Web Application Developer");
+		job.setJobDescription("Web applications");
+		job.setLocation("Hyderabad");
+		job.setSalary("15k-22k");
+		job.setSkillsRequired("basic knowledge of HTML");
+		job.setYrsOfExp("0-2 yrs");
+		jobDao.saveJob(job);
+		assertEquals(job.getId(), job.getId());
+
 	}
 }
-
-	
-	
-	
