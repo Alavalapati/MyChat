@@ -19,7 +19,7 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 	public boolean isEmailUnique(String email) {
-		// TODO Auto-generated method stub
+		
 		Session session = sessionFactory.getCurrentSession();
 		User user=(User)session.get(User.class,email);
 		
@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public User login(User user) {
-		// TODO Auto-generated method stub
+		
 		Session session = sessionFactory.getCurrentSession();
 		Query query=session.createQuery("from User where email=? and password=?");
 		query.setString(0,user.getEmail());
@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public User getUser(String email) {
-		// TODO Auto-generated method stub
+		
 		Session session = sessionFactory.getCurrentSession();
 		User user=(User)session.get(User.class,email);
 		return user;

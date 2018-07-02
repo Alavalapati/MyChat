@@ -1,7 +1,9 @@
 @CHARSET "ISO-8859-1";
-.liked {
+  .isliked {
 	color:blue ;
 }
 .default {
 	color:black ;
 }
+  
+

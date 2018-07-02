@@ -51,8 +51,10 @@ app.config(function($routeProvider){
 		controller:'BlogInDetailCtrl',
 		templateUrl:'pages/blogapprovalform.html' 
 	})
-
-	.otherwise({
+	.when('/uploaddisplaypic',{
+		templateUrl:'pages/uploaddisplaypicture.html' 
+	})
+    	.otherwise({
 		templateUrl:'pages/home.html'
 	})
 })

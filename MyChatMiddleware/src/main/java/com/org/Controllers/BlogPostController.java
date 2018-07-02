@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.org.Dao.BlogPostDao;
 import com.org.Dao.BlogPostLikesDao;
 import com.org.Dao.UserDao;
+import com.org.models.BlogComment;
 import com.org.models.BlogPost;
 import com.org.models.BlogPostLikes;
 import com.org.models.ErrorClazz;
@@ -117,6 +118,8 @@ return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 		if(email==null){
 			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
 		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		//if blogpostlikes is null,response.data=?
+		//if blogpostlikes is 1 object,response.data=[blogpostlikes object]
 
 	 }
 
@@ -134,6 +137,37 @@ return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 		BlogPost blogPost=blogPostLikesDao.updateBlogPostLikes(blogPostId,email);
 		
 		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
+		//blogpost likes count is updated
 		
 	}
-}
+	@RequestMapping(value="/addcomment/{commentTxt}/{id}",method=RequestMethod.POST)
+	public ResponseEntity<?> addBlogComment(@PathVariable String commentTxt,@PathVariable int id,HttpSession session){
+		String email=(String)session.getAttribute("email");
+		if(email==null){
+		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+
+ }
+		 
+		BlogComment blogComment=new BlogComment();
+		BlogPost blogPost=blogPostDao.getBlogPost(id);
+		User user=userDao.getUser(email);
+		blogComment.setBlogPost(blogPost);
+		blogComment.setCommentedBy(user);
+		blogComment.setCommentTxt(commentTxt);
+		blogComment.setCommentedOn(new Date());
+		blogPostDao.addBlogComment(blogComment);
+		return new ResponseEntity<BlogComment>(blogComment,HttpStatus.OK);
+		
+	}
+	@RequestMapping(value="/getblogcomments/{blogPostId}",method=RequestMethod.GET)
+	public ResponseEntity<?> getAllBlogComments(@PathVariable int blogPostId,HttpSession session){
+		String email=(String)session.getAttribute("email");
+		if(email==null){
+		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+        return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		List<BlogComment> blogComments=blogPostDao.getAllBlogComments(blogPostId);
+		return new ResponseEntity<List<BlogComment>>(blogComments,HttpStatus.OK);
+	}
+	}
