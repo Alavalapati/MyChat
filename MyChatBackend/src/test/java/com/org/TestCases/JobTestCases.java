@@ -27,10 +27,10 @@ public class JobTestCases {
 	@BeforeClass
 	public static void initialize() {
 		context = new AnnotationConfigApplicationContext();
-		context.scan("com.app");
+		context.scan("com.org");
 		context.refresh();
 
-		// get the productDAO from context
+		// get the jobDao from context
 		jobDao = (JobDao) context.getBean("jobDao");
 
 	}
@@ -40,11 +40,11 @@ public class JobTestCases {
 	public void CreateJobTestCase() {
 		Job job = new Job();
 
-		job.setJobTitle("Web Application Developer");
-		job.setJobDescription("Web applications");
+		job.setJobTitle("HR Developer");
+		job.setJobDescription("Hr developer");
 		job.setLocation("Hyderabad");
 		job.setSalary("15k-22k");
-		job.setSkillsRequired("basic knowledge of HTML");
+		job.setSkillsRequired("MBA");
 		job.setYrsOfExp("0-2 yrs");
 		jobDao.saveJob(job);
 		assertEquals(job.getId(), job.getId());

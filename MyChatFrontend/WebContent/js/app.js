@@ -54,7 +54,11 @@ app.config(function($routeProvider){
 	.when('/uploaddisplaypic',{
 		templateUrl:'pages/uploaddisplaypicture.html' 
 	})
-    	.otherwise({
+	.when('/suggestedusers',{
+		controller:'FriendCtrl',
+		templateUrl:'pages/friendsuggestions.html' 
+	})
+	    	.otherwise({
 		templateUrl:'pages/home.html'
 	})
 })

@@ -14,7 +14,7 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
 	rel="stylesheet" />
 <link 
-    href="/resources/css/color.css" rel="stylesheet/">
+    href="http://localhost:8085/MyChatFrontend/resources/css/color.css" rel="stylesheet">
 </head>
 <body ng-app="app">
 <header>
@@ -44,13 +44,22 @@
 			
 			
 			
-            <li class="dropdown"><a href="" class="dropdown-toggle"
+            			     
+			     <li class="dropdown"><a href="" class="dropdown-toggle"
 		data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined">Blog<b class="caret"></b></a>
 			<ul class="dropdown-menu">
 			     <li><a href="#/addblog">Post Blog</a></li>
 			     <li><a href="#/blogsapproved">Approved Blogs</a></li>
 			     <li><a href="#/blogswaitingforapproval" ng-show="loggedInUser.role=='ADMIN'">Blogs Waiting For Approval</a></li>
 			     </ul></li>
+			     
+			     
+			       <li class="dropdown"><a href="" class="dropdown-toggle"
+		data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined">Friend<b class="caret"></b></a>
+			<ul class="dropdown-menu">
+			     <li><a href="#/suggestedusers">Friend Suggestions</a></li>
+			     </ul></li>
+			     
 			     
 			     
            <li><a href="#/uploaddisplaypic"><img src="http://localhost:8085/MyChatMiddleware/getimage/{{loggedInUser.email}}" alt="Uploaddisplaypic" height="35px" width="35px"></a></li>
@@ -86,7 +95,8 @@
 <script type="text/javascript" src="services/blogpostservice.js"></script>
 <script type="text/javascript" src="controllers/blogindetailcontroller.js"></script>
 
-
+<script type="text/javascript" src="controllers/friendcontroller.js"></script>
+<script type="text/javascript" src="services/friendservice.js"></script>
 
 
 
