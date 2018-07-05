@@ -1,5 +1,6 @@
 <span style="color:red">{{error.message}}</span>
-  <table>
+<h3 align="center">Add New Job</h3>
+<table align="center">
 	<tr>
 		<td>Job Title</td>
 		<td><input type="text" ng-model="job.jobTitle"></td>
@@ -29,11 +30,7 @@
 		<td><input type="text" ng-model="job.salary"></td>
 	</tr>
 	<tr>
-		<td>Active</td>
-		<td><input type="text" ng-model="job.active"></td>
-	</tr>
-		<tr>
 	<td>
-	<input type="submit"  value="Add Job" ng-click="addJob(job)"></td>
+	<input type="submit" value="Add Job" ng-click="addJob(job)"></td>
 	</tr>
 </table>

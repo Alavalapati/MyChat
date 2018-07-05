@@ -22,12 +22,12 @@ public class FriendDaoImpl implements FriendDao {
 	public List<User> getSuggestedUsers(String email) {
 		Session session=sessionFactory.getCurrentSession();
 	
-		SQLQuery query=session.createSQLQuery("select * from USER_DB where email in"
-				+ "(select email from USER_DB where email!=?"
+		SQLQuery query=session.createSQLQuery("select * from user_s123 where email in"
+				+ "(select email from user_S123 where email!=?"
 						+ " minus "
-						+"(select toId_email from FRIEND_S180396 where fromId_email=? " 
+						+"(select toId_email from friend_s123 where fromId_email=? " 
 						+" union "
-						+"select fromId_email from FRIEND_S180396 where toId_email=? "
+						+"select fromId_email from friend_s123 where toId_email=? "
 						+ ")"
 						+")");
 		query.setString(0, email);
@@ -37,4 +37,47 @@ public class FriendDaoImpl implements FriendDao {
 		List<User> suggestedUsers=query.list();
 		return suggestedUsers;
 	}
+	public void addFriend(Friend friend) {
+		Session session=sessionFactory.getCurrentSession();
+        session.save(friend);
+		
+	}
+	public List<Friend> pendingRequests(String email) {
+		Session session=sessionFactory.getCurrentSession();
+        Query query=session.createQuery("from Friend where toId.email=? and status=?");
+        query.setString(0,email);
+        query.setCharacter(1,'P');
+        List<Friend> pendingRequests=query.list();
+		return pendingRequests;
+	}
+	public void upadateStatus(Friend friendRequest) {//friendRequest status is updated
+		Session session=sessionFactory.getCurrentSession();
+		if(friendRequest.getStatus()=='A')
+			session.update(friendRequest);
+		if(friendRequest.getStatus()=='D')
+			session.delete(friendRequest);
+
+		
+		
+	}
+	public List<Friend> getAllFriends(String email) {
+		Session session=sessionFactory.getCurrentSession();
+		//select toId-email from friend where fromId_email=? and status='A' -SQL
+		//Type of toId property is User
+		Query query1=session.createQuery("select f.toId from Friend f where f.fromId.email=? and f.status=?");//HQL
+		query1.setString(0, email);
+		query1.setCharacter(1, 'A');
+		List<Friend> friendsList1=query1.list();
+		
+		Query query2=session.createQuery("select f.fromId from Friend f where f.toId.email=? and f.status=?");
+		query2.setString(0, email);
+		query2.setCharacter(1, 'A');
+		List<Friend> friendsList2=query2.list();
+		
+		friendsList2.addAll(friendsList2);
+		return friendsList2;
+		
+		
+		
+			}
 }

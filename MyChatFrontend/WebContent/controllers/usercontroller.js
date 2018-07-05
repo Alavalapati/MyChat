@@ -33,7 +33,7 @@ app.controller('UserCtrl',function($scope,UserService,$location,$rootScope,$cook
 					//store the updated user details in $rootScope and also in $cookieStore
 					$rootScope.loggedInUser=response.data//updated user object from middleware
 					$cookieStore.put('loggedInUser',response.data)
-					alert('Updated user details successfully...')
+				    alert('Updated user details successfully...')
 					$location.path('/home')
 				},
 				function(response){

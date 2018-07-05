@@ -1,3 +1,4 @@
+
 package com.org.models;
 
 import javax.persistence.Entity;

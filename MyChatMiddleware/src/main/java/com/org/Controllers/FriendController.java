@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.org.Dao.FriendDao;
 import com.org.Dao.UserDao;
 import com.org.models.ErrorClazz;
+import com.org.models.Friend;
 import com.org.models.User;
 
 
@@ -26,14 +27,82 @@ public class FriendController {
 	private UserDao userDao;
 	
 @RequestMapping(value="/suggestedusers",method=RequestMethod.GET)
-    public ResponseEntity<?> getSuggestedUsers(HttpSession session){
+public ResponseEntity<?> getSuggestedUsers(HttpSession session){
+	String email=(String)session.getAttribute("email"); 
+	if(email==null){
+	  ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	  return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+}
+	
+	List<User>suggestedUsers=friendDao.getSuggestedUsers(email);
+return new ResponseEntity<List<User>>(suggestedUsers,HttpStatus.OK);
+}
+
+
+@RequestMapping(value="/addfriend",method=RequestMethod.POST)
+public ResponseEntity<?> addFriend(@RequestBody User toIdValue,HttpSession session){
 	String email=(String)session.getAttribute("email"); 
 	if(email==null){
 		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
 	return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
 	}
-		
-	List<User> suggestedUsers=friendDao.getSuggestedUsers(email);
-return new ResponseEntity<List<User>>(suggestedUsers,HttpStatus.OK);
+	User fromId=userDao.getUser(email);
+	Friend friend=new Friend();
+	friend.setFromId(fromId);
+	friend.setToId(toIdValue);
+	friend.setStatus('P');
+	friendDao.addFriend(friend);
+	
+	return new ResponseEntity<Void>(HttpStatus.OK);
+}
+
+@RequestMapping(value="/pendingrequests",method=RequestMethod.GET)
+public ResponseEntity<?> getPendingRequests(HttpSession session){
+	String email=(String)session.getAttribute("email"); 
+	if(email==null){
+	  ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	  return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+}
+	
+	List<Friend> pendingRequests=friendDao.pendingRequests(email);
+	return new ResponseEntity<List<Friend>>(pendingRequests,HttpStatus.OK);
+	//List<Friend> -> pendingRequests
+}
+
+
+@RequestMapping(value="/updatestatus",method=RequestMethod.PUT)
+public ResponseEntity<?> updateStatus(@RequestBody Friend friendRequest,HttpSession session){
+	String email=(String)session.getAttribute("email"); 
+	if(email==null){
+	  ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	  return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+}
+   friendDao.upadateStatus(friendRequest);
+   return new ResponseEntity<Void>(HttpStatus.OK);
+ }
+
+
+@RequestMapping(value="/friends",method=RequestMethod.GET)
+public ResponseEntity<?> getAllFriends(HttpSession session){
+	String email=(String)session.getAttribute("email"); 
+	if(email==null){
+	  ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	  return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+}
+        List<Friend> friends=friendDao.getAllFriends(email);
+        return new ResponseEntity<List<Friend>>(friends,HttpStatus.OK);
+	
 }
 }
+
+
+	
+
+
+
+
+
+
+
+
+

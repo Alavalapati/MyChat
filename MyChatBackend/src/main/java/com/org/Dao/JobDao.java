@@ -11,4 +11,3 @@ public interface JobDao {
   List<Job> getInActiveJobs();
 void updateJob(Job job);
 }
-

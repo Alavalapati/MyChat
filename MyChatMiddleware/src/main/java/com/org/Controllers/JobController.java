@@ -67,7 +67,7 @@ public class JobController {
     }
     @RequestMapping(value="/inactivejobs",method=RequestMethod.GET)//select * from job where active=false
     public ResponseEntity<?> getInActiveJobs(HttpSession session){//Authenctication and authorization
-    	String email="prabha.reddy@abc.com";//(String)session.getAttribute("email");
+    	String email=(String)session.getAttribute("email");
     	if(email==null){
     		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access.. please login");
     		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);//2nd callback fun
@@ -96,10 +96,3 @@ public class JobController {
     	return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }
-
-
-
-
-
-
-
