@@ -13,8 +13,11 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
 	rel="stylesheet" />
+	
 <link 
     href="http://localhost:8085/MyChatFrontend/resources/css/color.css" rel="stylesheet">
+<link
+     href="http://localhost:8085/MyChatFrontend/resources/css/navbar.css" rel="stylesheet">
 </head>
 <body ng-app="app">
 <header>
@@ -65,7 +68,10 @@
 			     
 			     
            <li><a href="#/uploaddisplaypic"><img src="http://localhost:8085/MyChatMiddleware/getimage/{{loggedInUser.email}}" alt="Uploaddisplaypic" height="35px" width="35px"></a></li>
-           <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
+           
+            <li><a href="#/chat" ng-show="loggedInUser.firstname">Messanger</a></li>
+ 
+           <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Hi..{{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
            <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>
             <li><a href="#/login" ng-show="loggedInUser.firstname==undefined">Sign In</a></li>
@@ -100,6 +106,9 @@
 <script type="text/javascript" src="controllers/friendcontroller.js"></script>
 <script type="text/javascript" src="services/friendservice.js"></script>
 
-
+<script type="text/javascript" src="services/chatservice.js"></script>
+<script type="text/javascript" src="controllers/chatcontroller.js"></script>
+<script type="text/javascript" src="js/sockjs/sockjs.min.js"></script>
+<script type="text/javascript" src="js/stomp/dist/stomp.min.js"></script>
 
 </html>

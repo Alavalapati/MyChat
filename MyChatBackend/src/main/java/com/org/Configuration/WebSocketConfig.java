@@ -16,7 +16,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 @Configuration
 @EnableWebSocketMessageBroker  // enable broker based stomp messaging
-@ComponentScan(basePackages="com.niit")
+@ComponentScan(basePackages="com.org")
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 

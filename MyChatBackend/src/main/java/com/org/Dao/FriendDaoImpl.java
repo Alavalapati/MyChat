@@ -25,9 +25,9 @@ public class FriendDaoImpl implements FriendDao {
 		SQLQuery query=session.createSQLQuery("select * from user_s123 where email in"
 				+ "(select email from user_S123 where email!=?"
 						+ " minus "
-						+"(select toId_email from friend_s123 where fromId_email=? " 
+						+"(select toId_email from friend_s12 where fromId_email=? " 
 						+" union "
-						+"select fromId_email from friend_s123 where toId_email=? "
+						+"select fromId_email from friend_s12 where toId_email=? "
 						+ ")"
 						+")");
 		query.setString(0, email);
@@ -62,7 +62,7 @@ public class FriendDaoImpl implements FriendDao {
 	}
 	public List<Friend> getAllFriends(String email) {
 		Session session=sessionFactory.getCurrentSession();
-		//select toId-email from friend where fromId_email=? and status='A' -SQL
+		//select toId_email from friend where fromId_email=? and status='A'-SQL
 		//Type of toId property is User
 		Query query1=session.createQuery("select f.toId from Friend f where f.fromId.email=? and f.status=?");//HQL
 		query1.setString(0, email);
@@ -74,10 +74,9 @@ public class FriendDaoImpl implements FriendDao {
 		query2.setCharacter(1, 'A');
 		List<Friend> friendsList2=query2.list();
 		
-		friendsList2.addAll(friendsList2);
+		friendsList2.addAll(friendsList1);
+		
 		return friendsList2;
-		
-		
-		
-			}
+	}
+
 }

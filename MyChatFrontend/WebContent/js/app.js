@@ -66,9 +66,14 @@ app.config(function($routeProvider){
 		controller:'FriendCtrl',
 		templateUrl:'pages/friendslist.html' 
 	})
+	
+    .when('/chat',{
+		templateUrl:'pages/chat.html',
+		controller:'ChatCtrl'
+	})
 
 
-	    	.otherwise({
+        .otherwise({
 		templateUrl:'pages/home.html'
 	})
 })

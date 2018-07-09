@@ -1,1 +1,5 @@
 @CHARSET "ISO-8859-1";
+body {
+   background-image: url("http://localhost:8085/MyChatFrontend/resources/images/login.png");
+   background-color: #cccccc;
+}

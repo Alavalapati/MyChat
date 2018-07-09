@@ -1,0 +1,9 @@
+@CHAR@CHARSET "ISO-8859-1";
+#nav_bar {
+background-color: 	#ff80ff;
+border-color: 	#ff8080;
+}
+#links a{
+     color:#400040;
+     font-size:18px;
+}SET "ISO-8859-1";
